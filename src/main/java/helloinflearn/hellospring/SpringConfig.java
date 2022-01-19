@@ -1,5 +1,6 @@
 package helloinflearn.hellospring;
 
+import helloinflearn.hellospring.aop.TimeTraceAop;
 import helloinflearn.hellospring.repository.*;
 import helloinflearn.hellospring.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;

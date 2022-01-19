@@ -20,24 +20,15 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    /** 
+    /**
      * 회원가입
      */
     public Long join(Member member) {
 
-        long start = System.currentTimeMillis();
-
-        try {
-
-            // 같은 이름 중복 막기 위해서는
-            validateDuplicateMember(member);
-            memberRepository.save(member);
-            return member.getId();
-        } finally {
-            long finish = System.currentTimeMillis();
-            long timeMs = finish - start;
-            System.out.println("join = " + timeMs + "ms");
-        }
+        // 같은 이름 중복 막기 위해서는
+        validateDuplicateMember(member);
+        memberRepository.save(member);
+        return member.getId();
     }
 
     private void validateDuplicateMember(Member member) {
@@ -48,15 +39,7 @@ public class MemberService {
     }
 
     public List<Member> findMember() {
-        long start = System.currentTimeMillis();
-
-        try {
-            return memberRepository.findAll();
-        } finally {
-            long finish = System.currentTimeMillis();
-            long timeMs = finish - start;
-            System.out.println("findMembers " + timeMs + "ms");
-        }
+        return memberRepository.findAll();
     }
 
     public Optional<Member> findOne(Long memberId){
